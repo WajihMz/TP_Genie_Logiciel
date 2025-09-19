@@ -80,5 +80,16 @@ public class MajFinDeTourTests {
         assertThat(p.currenthealthpoints, is(12)); // +2
     }
 
+    @Test
+    @DisplayName(">=50%: plafonné à HP max")
+    void atOrAboveHalfCappedToMax() {
+        player p = mk("ADVENTURER", 40, 39);
+        UpdatePlayer.majFinDeTour(p);
+        assertThat(p.currenthealthpoints, is(39)); // reste 39
+        p.currenthealthpoints = 45;
+        UpdatePlayer.majFinDeTour(p);
+        assertThat(p.currenthealthpoints, is(40)); // cap à max
+    }
+
 
 }
