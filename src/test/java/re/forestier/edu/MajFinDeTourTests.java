@@ -27,5 +27,13 @@ public class MajFinDeTourTests {
         assertThat(p.currenthealthpoints, is(0));
     }
 
+    @Test
+    @DisplayName("DWARF <50%: +1 sans Holy Elixir")
+    void dwarfBelowHalfNoElixir() {
+        player p = mk("DWARF", 40, 10); // < 20
+        UpdatePlayer.majFinDeTour(p);
+        assertThat(p.currenthealthpoints, is(11)); // +1
+    }
+
 
 }
