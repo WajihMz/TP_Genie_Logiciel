@@ -52,5 +52,14 @@ public class MajFinDeTourTests {
         assertThat(p.currenthealthpoints, is(11));
     }
 
+    @Test
+    @DisplayName("ARCHER <50%: +2 avec Magic Bow (bonus proportionnel)")
+    void archerBelowHalfWithBow() {
+        player p = mk("ARCHER", 40, 16); // < 20 ; 16/8 - 1 = 1
+        p.inventory.add("Magic Bow");
+        UpdatePlayer.majFinDeTour(p);
+        assertThat(p.currenthealthpoints, is(18)); // +1 + (2-1) = +2
+    }
+
 
 }
