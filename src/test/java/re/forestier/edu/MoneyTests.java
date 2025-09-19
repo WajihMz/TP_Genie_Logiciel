@@ -16,5 +16,13 @@ public class MoneyTests {
         p.addMoney(40);
         assertThat(p.money, is(140));
     }
+
+    @Test
+    @DisplayName("removeMoney diminue le montant")
+    void removeMoneyDecrements() {
+        player p = new player("T", "A", "ADVENTURER", 100, new ArrayList<>());
+        p.removeMoney(40);
+        assertThat(p.money, is(60));
+    }
     
 }
