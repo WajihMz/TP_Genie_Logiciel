@@ -40,5 +40,14 @@ public class AddXpTests {
         assertThat(p.inventory.size(), is(inventoryBefore + 1));
     }
 
+    @Test
+    @DisplayName("addXp: level-up -> true et +1 objet (DWARF)")
+    void addXpLevelUpDwarf() {
+        player p = new player("T", "A", "DWARF", 0, new ArrayList<>());
+        int inventoryBefore = p.inventory.size();
+        boolean leveled = UpdatePlayer.addXp(p, 10);
+        assertThat(leveled, is(true));
+        assertThat(p.inventory.size(), is(inventoryBefore + 1));
+    }
 
 }
