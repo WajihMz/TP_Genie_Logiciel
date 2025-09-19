@@ -61,5 +61,14 @@ public class MajFinDeTourTests {
         assertThat(p.currenthealthpoints, is(18)); // +1 + (2-1) = +2
     }
 
+    @Test
+    @DisplayName("ADVENTURER <50% et niv<3: +1 (2 puis -1)")
+    void adventurerBelowHalfLowLevel() {
+        player p = mk("ADVENTURER", 40, 10);
+        // force XP <27 (déjà le cas par défaut)
+        UpdatePlayer.majFinDeTour(p);
+        assertThat(p.currenthealthpoints, is(11)); // +2 puis -1 => +1
+    }
+
 
 }
