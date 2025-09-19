@@ -30,4 +30,11 @@ public class UnitTests {
         fail();
     }
 
+    @Test
+    @DisplayName("Niveau initial d'un joueur = 1")
+    void initialLevelIsOne() {
+        player p = new player("T", "A", "ADVENTURER", 0, new ArrayList<>());
+        assertThat(p.retrieveLevel(), is(1));
+    }
+
 }
