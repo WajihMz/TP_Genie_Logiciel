@@ -37,4 +37,13 @@ public class UnitTests {
         assertThat(p.retrieveLevel(), is(1));
     }
 
+    @Test
+    @DisplayName("XP=9 -> niveau reste 1")
+    void levelStaysOneAtNineXp() {
+        player p = new player("T", "A", "ADVENTURER", 0, new ArrayList<>());
+        re.forestier.edu.rpg.UpdatePlayer.addXp(p, 9);
+        assertThat(p.getXp(), is(9));
+        assertThat(p.retrieveLevel(), is(1));
+    }
+
 }
