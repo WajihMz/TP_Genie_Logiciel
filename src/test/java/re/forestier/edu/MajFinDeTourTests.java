@@ -70,5 +70,15 @@ public class MajFinDeTourTests {
         assertThat(p.currenthealthpoints, is(11)); // +2 puis -1 => +1
     }
 
+    @Test
+    @DisplayName("ADVENTURER <50% et niv>=3: +2")
+    void adventurerBelowHalfHighLevel() {
+        player p = mk("ADVENTURER", 40, 10);
+        // passer niv 3 (>=27 XP)
+        re.forestier.edu.rpg.UpdatePlayer.addXp(p, 27);
+        UpdatePlayer.majFinDeTour(p);
+        assertThat(p.currenthealthpoints, is(12)); // +2
+    }
+
 
 }
