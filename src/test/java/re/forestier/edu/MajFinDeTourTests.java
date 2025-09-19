@@ -44,5 +44,13 @@ public class MajFinDeTourTests {
         assertThat(p.currenthealthpoints, is(12)); // +1 (elf) +1 (classe)
     }
 
+    @Test
+    @DisplayName("ARCHER <50%: +1 sans Magic Bow")
+    void archerBelowHalfNoBow() {
+        player p = mk("ARCHER", 40, 10);
+        UpdatePlayer.majFinDeTour(p);
+        assertThat(p.currenthealthpoints, is(11));
+    }
+
 
 }
