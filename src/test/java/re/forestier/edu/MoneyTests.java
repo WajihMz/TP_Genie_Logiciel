@@ -4,6 +4,8 @@ import org.junit.jupiter.api.*;
 import re.forestier.edu.rpg.player;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 import java.util.ArrayList;
 
@@ -23,6 +25,13 @@ public class MoneyTests {
         player p = new player("T", "A", "ADVENTURER", 100, new ArrayList<>());
         p.removeMoney(40);
         assertThat(p.money, is(60));
+    }
+
+    @Test
+    @DisplayName("removeMoney interdit l'argent négatif (exception)")
+    void removeMoneyThrowsOnNegative() {
+        player p = new player("T", "A", "ADVENTURER", 100, new ArrayList<>());
+        assertThrows(IllegalArgumentException.class, () -> p.removeMoney(200));
     }
     
 }
