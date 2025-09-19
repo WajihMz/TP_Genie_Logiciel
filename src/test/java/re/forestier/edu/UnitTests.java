@@ -102,5 +102,6 @@ public class UnitTests {
         re.forestier.edu.rpg.UpdatePlayer.addXp(p, 111);
         assertThat(p.retrieveLevel(), is(5));
     }
+    
 
 }
